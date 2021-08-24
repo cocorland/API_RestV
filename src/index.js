@@ -13,7 +13,7 @@ app.use(express.json());
 
 // routes
 app.get('/', (req, res) => {
-    res.send({"Title": "Hello World"});
+    res.json({"Title": "Hello World"});
 });
 
 //starting de server
