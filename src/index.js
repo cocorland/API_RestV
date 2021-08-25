@@ -12,9 +12,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // routes
-app.get('/', (req, res) => {
-    res.json({"Title": "Hello World"});
-});
+app.use(require('./routes/index'));
+app.use('/api/pdfs', require('./routes/pdfs'));
 
 //starting de server
 app.listen(app.get('port'), () => {
