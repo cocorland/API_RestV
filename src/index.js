@@ -12,8 +12,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // routes
-app.use(require('./routes/index'));
 app.use('/api/pdfs', require('./routes/pdfs'));
+app.use('/api/directorios', require('./controllers/directorios'));
 
 //starting de server
 app.listen(app.get('port'), () => {
