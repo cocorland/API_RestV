@@ -1,16 +1,18 @@
 const express = require('express');
+const ejs = require('ejs');
 const app = express();
 const morgan = require('morgan');
 
 //settings
 app.set('port', process.env.PORT || 4000);
 app.set('json spaces', 2);
+app.set('view engine', 'ejs');
 
 // middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-//Pray
+// solving `CORS` conflicts
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -32,7 +34,7 @@ app.use(function (req, res, next) {
 
 // routes
 app.use('/api/pdfs', require('./routes/pdfs'));
-app.use('/api/todos', require('./controllers/todos'));
+app.use('/api/folders', require('./controllers/folders'));
 
 //starting de server
 app.listen(app.get('port'), () => {
